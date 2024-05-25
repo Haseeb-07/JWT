@@ -1,4 +1,4 @@
-Welcome to my project! It's a simple yet powerful web application designed to handle user authentication smoothly.
+Welcome to my project! It's a simple yet powerful web application designed using Tailwind.css to handle user authentication smoothly.
 Whether you're just starting out or have some experience in web development, you'll find this project helpful and insightful.
 
 At its heart, my project relies on React, a widely-used JavaScript library for creating user interfaces.
