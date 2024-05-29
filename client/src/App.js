@@ -5,7 +5,8 @@ import LoginForm from './components/LoginForm';
 import { Toaster } from 'react-hot-toast';
 import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
-
+import HomePage from './pages/HomePage';
+import RandomJoke from './pages/RandomJoke';
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -43,7 +44,18 @@ const App = () => {
               !isAuthenticated ? (
                 <LoginForm />
               ) : (
-                <h2>You can access the App</h2>
+                <HomePage/>
+              )
+            }
+          />
+          <Route
+            path="/foodjoke"
+            element={
+              // Conditionally render LoginForm if not authenticated
+              !isAuthenticated ? (
+                <LoginForm />
+              ) : (
+                <RandomJoke/>
               )
             }
           />

@@ -20,8 +20,12 @@ const SignupForm = () => {
             await axios.post('http://localhost:5000/api/signup/register', formData);
             toast.success('User registered successfully');
         } catch (error) {
-            console.error('Error registering user:', error.response.data);
-            toast.error(error.response.data.message || 'Error registering user');
+            if (error.response && error.response.status === 400 && error.response.data.message) {
+                toast.error(error.response.data.message);
+            } else {
+                console.error('Error registering user:', error.response ? error.response.data : error);
+                toast.error('Error registering user');
+            }
         }
     };
 
@@ -69,14 +73,13 @@ const SignupForm = () => {
                     >
                         Sign Up
                     </button>
-                   
                 </form>
                 <p className="text-sm text-center text-gray-600">
                     Already have an account?{' '}
                     <Link to="/" className="text-indigo-500 hover:underline">
                         Login here
                     </Link>
-                    </p>
+                </p>
             </div>
         </div>
     );
